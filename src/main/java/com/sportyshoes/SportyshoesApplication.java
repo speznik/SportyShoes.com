@@ -1,4 +1,3 @@
-// src/main/java/com/sportyshoes/SportyshoesApplication.java
 package com.sportyshoes;
 
 import org.springframework.boot.SpringApplication;

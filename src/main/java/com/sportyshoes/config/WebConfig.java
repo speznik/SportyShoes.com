@@ -1,4 +1,3 @@
-// src/main/java/com/sportyshoes/config/WebConfig.java
 package com.sportyshoes.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("redirect:/catalog");
+        // "/" shows catalog.html
+        registry.addViewController("/").setViewName("catalog");
     }
 }

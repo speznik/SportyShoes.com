@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Categories</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="/admin/dashboard" class="nav-logo">Admin</a>
+    <ul class="nav-links">
+      <li><a href="/admin/categories">Categories</a></li>
+      <li><a href="/admin/products">Products</a></li>
+      <li><a href="/admin/users">Users</a></li>
+      <li><a href="/admin/reports">Reports</a></li>
+      <li><a href="/catalog">Home</a></li>
+    </ul>
+  </header>
+  <main class="container">
+    <h1>Manage Categories</h1>
+    <table class="product-grid">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows -->
+      </tbody>
+    </table>
+    <form action="/admin/categories/save" method="post" style="margin-top:1.5rem;">
+      <label>New Category Name:</label>
+      <input type="text" name="name" required>
+      <button type="submit" class="btn">Add Category</button>
+    </form>
+  </main>
+  <footer class="footer">
+    <p>© 2025 Sporty Shoes, Inc.</p>
+  </footer>
+</html>

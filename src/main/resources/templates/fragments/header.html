@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar">
+  <a th:href="@{/}" class="nav-logo">Sporty Shoes</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/catalog}">Home</a></li>
+    <li><a th:href="@{/cart}">Cart</a></li>
+    <li><a th:href="@{/checkout}">Checkout</a></li>
+    <li><a th:href="@{/admin/login}">Admin</a></li>
+  </ul>
+</nav>
+</body>
+</html>
