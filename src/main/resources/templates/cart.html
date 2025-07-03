@@ -1,28 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Sporty Shoes - Cart</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <header class="navbar">
-    <a href="/" class="nav-logo">Sporty Shoes</a>
-    <ul class="nav-links">
-      <li><a href="/catalog">Home</a></li>
-      <li><a href="/cart">Cart</a></li>
-      <li><a href="/checkout">Checkout</a></li>
-      <li><a href="/admin/login">Admin</a></li>
-    </ul>
-  </header>
-  <main class="container">
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/><title>Cart</title><link rel="stylesheet" href="/css/style.css"/></head>
+<body class="with-sidebar">
+  <div th:replace="fragments/sidebar :: sidebar"></div>
+  <main class="main">
     <h1>Your Cart</h1>
-    <div id="cart-container"></div>
-    <button class="btn" onclick="window.location.href='/checkout'">Proceed to Checkout</button>
+    <table>
+      <tr><th>Product</th><th>Qty</th><th>Line</th></tr>
+      <tr th:each="it:${items}">
+        <td th:text="${it.product.name}">Name</td>
+        <td th:text="${it.qty}">1</td>
+        <td th:text="${'$'+it.line}">$0.00</td>
+      </tr>
+    </table>
+    <h3 th:text="'Total: $'+${total}">Total: $0.00</h3>
+    <form th:action="@{/products}" method="post"><button type="submit">Checkout</button></form>
   </main>
-  <footer class="footer">
-    <p>© 2025 Sporty Shoes, Inc.</p>
-  </footer>
-  <script src="/js/scripts.js"></script>
 </body>
 </html>

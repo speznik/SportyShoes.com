@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Sales Reports</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8"/>
+  <title>Purchase Reports</title>
+  <link rel="stylesheet" href="/css/style.css"/>
 </head>
-<body>
-  <header class="navbar">
-    <a href="/admin/dashboard" class="nav-logo">Admin</a>
-    <ul class="nav-links">
-      <li><a href="/admin/categories">Categories</a></li>
-      <li><a href="/admin/products">Products</a></li>
-      <li><a href="/admin/users">Users</a></li>
-      <li><a href="/admin/reports">Reports</a></li>
-      <li><a href="/catalog">Home</a></li>
-    </ul>
-  </header>
-  <main class="container">
-    <h1>Sales Reports</h1>
-    <form action="/admin/reports" method="get" style="margin-bottom:1rem;">
-      <label>From:</label><input type="date" name="from">
-      <label>To:</label><input type="date" name="to">
-      <button class="btn">Filter</button>
-    </form>
-    <table class="product-grid">
-      <thead><tr><th>Order ID</th><th>Date</th><th>Total Amount</th></tr></thead>
+<body class="with-sidebar">
+  <!-- sidebar -->
+  <aside th:replace="fragments/sidebar :: sidebar"></aside>
+
+  <!-- main content -->
+  <main class="main">
+    <h1>Purchase Reports</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Total</th>
+        </tr>
+      </thead>
       <tbody>
-        <!-- Dynamic rows -->
+        <tr th:each="r : ${reports}">
+          <td th:text="${r.date}">2025-07-03T17:00:00</td>
+          <td th:text="${r.customer}">Test User</td>
+          <td th:text="${r.total}">$150.00</td>
+        </tr>
       </tbody>
     </table>
   </main>
-  <footer class="footer"><p>© 2025 Sporty Shoes, Inc.</p></footer>
+</body>
 </html>

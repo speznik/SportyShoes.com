@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>Manage Categories</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"/>
 </head>
-<body>
-  <header class="navbar">
-    <a href="/admin/dashboard" class="nav-logo">Admin</a>
-    <ul class="nav-links">
-      <li><a href="/admin/categories">Categories</a></li>
-      <li><a href="/admin/products">Products</a></li>
-      <li><a href="/admin/users">Users</a></li>
-      <li><a href="/admin/reports">Reports</a></li>
-      <li><a href="/catalog">Home</a></li>
-    </ul>
-  </header>
-  <main class="container">
-    <h1>Manage Categories</h1>
-    <table class="product-grid">
+<body class="with-sidebar">
+  <aside th:replace="fragments/sidebar :: sidebar"></aside>
+  <main class="main">
+    <h1>Categories</h1>
+    <table>
       <thead>
-        <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Action</th></tr>
       </thead>
       <tbody>
-        <!-- Dynamic rows -->
+        <tr th:each="c : ${categories}">
+          <td th:text="${c.id}"></td>
+          <td th:text="${c.name}"></td>
+          <td>
+            <a th:href="@{'/admin/categories/delete/' + ${c.id}}" class="btn">Delete</a>
+          </td>
+        </tr>
       </tbody>
     </table>
-    <form action="/admin/categories/save" method="post" style="margin-top:1.5rem;">
-      <label>New Category Name:</label>
-      <input type="text" name="name" required>
-      <button type="submit" class="btn">Add Category</button>
+    <form th:action="@{/admin/categories}" method="post" class="form">
+      <input name="name" placeholder="New Category" required/>
+      <button class="btn" type="submit">Add</button>
     </form>
   </main>
-  <footer class="footer">
-    <p>© 2025 Sporty Shoes, Inc.</p>
-  </footer>
+</body>
 </html>

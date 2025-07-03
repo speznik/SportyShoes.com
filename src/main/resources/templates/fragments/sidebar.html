@@ -1,0 +1,12 @@
+<aside th:fragment="sidebar">
+  <ul>
+    <li th:if="${session.role=='user'}"><a th:href="@{/products}">Products</a></li>
+    <li th:if="${session.role=='user'}"><a th:href="@{/cart}">Cart</a></li>
+    <li th:if="${session.role=='admin'}"><a th:href="@{/admin/dashboard}">Dashboard</a></li>
+    <li th:if="${session.role=='admin'}"><a th:href="@{/admin/customers}">Customers</a></li>
+    <li th:if="${session.role=='admin'}"><a th:href="@{/admin/categories}">Categories</a></li>
+    <li th:if="${session.role=='admin'}"><a th:href="@{/admin/products}">Products</a></li>
+    <li th:if="${session.role=='admin'}"><a th:href="@{/admin/reports}">Reports</a></li>
+    <li><a th:href="@{/logout}">Logout</a></li>
+  </ul>
+</aside>

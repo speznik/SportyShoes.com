@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Customer List</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body class="with-sidebar">
+  <aside th:replace="fragments/sidebar :: sidebar"></aside>
+  <main class="main">
+    <h1>Customers</h1>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Email</th><th>Name</th></tr>
+      </thead>
+      <tbody>
+        <tr th:each="u : ${users}">
+          <td th:text="${u.id}"></td>
+          <td th:text="${u.email}"></td>
+          <td th:text="${u.fullName}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

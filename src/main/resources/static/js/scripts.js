@@ -1,10 +1,10 @@
 const products=[
   {id:1,name:'Sporty Runner',desc:'Lightweight running shoe with breathable mesh',price:89.99,image:'/images/shoe1.jpg'},
   {id:2,name:'Court Champ', desc:'Durable tennis shoe with reinforced toe',      price:99.99,image:'/images/shoe2.jpg'},
-  {id:3,name:'Trail Blazer', desc:'Off‑road trail shoe with rugged sole',         price:109.99,image:'/images/shoe3.jpg'},
+  {id:3,name:'Trail Blazer', desc:'Off road trail shoe with rugged sole',         price:109.99,image:'/images/shoe3.jpg'},
   {id:4,name:'Gym Flex',    desc:'Versatile gym shoe for all workouts',           price:79.99,image:'/images/shoe4.jpg'},
   {id:5,name:'Sneaker Pro', desc:'Stylish everyday sneaker with comfort fit',     price:69.99,image:'/images/shoe5.jpg'},
-  {id:6,name:'Ultra Sprint',desc:'High‑performance sprint shoe with carbon plate',price:119.99,image:'/images/shoe6.jpg'}
+  {id:6,name:'Ultra Sprint',desc:'High performance sprint shoe with carbon plate',price:119.99,image:'/images/shoe6.jpg'}
 ];
 
 function renderCatalog(){
@@ -40,6 +40,7 @@ function renderProductDetail(){
     </div>`;
 }
 
+/* ---------- Cart ---------- */
 function getCart(){return JSON.parse(localStorage.getItem('cart')||'[]');}
 function saveCart(cart){localStorage.setItem('cart',JSON.stringify(cart));}
 function addToCart(id){const cart=getCart();cart.push(id);saveCart(cart);alert('Added to cart');}
@@ -56,12 +57,15 @@ function renderCart(){const container=document.getElementById('cart-container');
   });
 }
 
+/* ---------- Signup ---------- */
 function initSignup(){const form=document.getElementById('signup-form');if(!form)return;
   form.addEventListener('submit',e=>{e.preventDefault();alert('Account created (mock)!');location.href='/catalog';});}
 
+/* ---------- Checkout ---------- */
 function initCheckout(){const form=document.getElementById('checkout-form');if(!form)return;
   form.addEventListener('submit',e=>{e.preventDefault();alert('Order placed!');localStorage.removeItem('cart');location.href='/catalog';});}
 
+/* ---------- Router ---------- */
 document.addEventListener('DOMContentLoaded',()=>{
   const path=location.pathname;
   if(path==='/'||path.startsWith('/catalog'))      renderCatalog();

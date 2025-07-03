@@ -1,26 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"/>
 </head>
-<body>
-  <header class="navbar">
-    <a href="/admin/dashboard" class="nav-logo">Admin</a>
-    <ul class="nav-links">
-      <li><a href="/admin/categories">Categories</a></li>
-      <li><a href="/admin/products">Products</a></li>
-      <li><a href="/admin/users">Users</a></li>
-      <li><a href="/admin/reports">Reports</a></li>
-      <li><a href="/catalog">Home</a></li>
+<body class="with-sidebar">
+  <aside th:replace="fragments/sidebar :: sidebar"></aside>
+  <main class="main">
+    <h1>Admin Dashboard</h1>
+    <ul class="admin-menu">
+      <li><a th:href="@{/admin/customers}">Customer List</a></li>
+      <li><a th:href="@{/admin/categories}">Manage Categories</a></li>
+      <li><a th:href="@{/admin/products}">Manage Products</a></li>
+      <li><a th:href="@{/admin/reports}">Purchase Reports</a></li>
     </ul>
-  </header>
-  <main class="container">
-    <h1>Dashboard</h1>
-    <p>Welcome, Admin!</p>
   </main>
-  <footer class="footer">
-    <p>© 2025 Sporty Shoes, Inc.</p>
-  </footer>
+</body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/><title>Products</title><link rel="stylesheet" href="/css/style.css"/></head>
+<body class="with-sidebar">
+  <div th:replace="fragments/sidebar :: sidebar"></div>
+  <main class="main">
+    <h1>Products</h1>
+    <div class="grid">
+      <div class="card" th:each="p:${products}">
+        <img th:src="@{${p.imageUrl}}" th:alt="${p.name}"/>
+        <h2 th:text="${p.name}">Name</h2>
+        <p th:text="${p.description}">Desc</p>
+        <p th:text="'$'+${p.price}">$0.00</p>
+        <a th:href="@{'/addToCart/'+${p.id}}" class="btn">Add to Cart</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

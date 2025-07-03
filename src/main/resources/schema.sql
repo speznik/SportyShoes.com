@@ -1,0 +1,33 @@
+CREATE TABLE admin (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(100) NOT NULL
+);
+CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  full_name VARCHAR(100),
+  password VARCHAR(100) NOT NULL
+);
+CREATE TABLE product (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  description TEXT,
+  price DECIMAL(10,2) NOT NULL,
+  image_url VARCHAR(255)
+);
+CREATE TABLE `order` (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  total_amount DECIMAL(10,2),
+  FOREIGN KEY(user_id) REFERENCES user(id)
+);
+CREATE TABLE order_item (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT,
+  product_id INT,
+  quantity INT NOT NULL,
+  FOREIGN KEY(order_id) REFERENCES `order`(id),
+  FOREIGN KEY(product_id) REFERENCES product(id)
+);
